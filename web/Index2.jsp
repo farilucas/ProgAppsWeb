@@ -3,7 +3,7 @@
     Created on : Oct 12, 2019, 9:28:31 PM
     Author     : kangaru
 --%>
-
+<%@page import="Controladores.Sistema"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,14 +13,34 @@
         <title>UyTube</title>
     </head>
     <body>
+        <%
+        Sistema s = Sistema.getInstance();
+        s.CargarDatosPrueba();
+        %>
+        <form action="Busqueda" method="post" target="iFrame">
         <div class="wrap">
 	   <div class="search">
 	      	<input type="text" class="searchTerm" placeholder="Buscar">
 	      	<button type="submit" class="searchButton" >
 	      		Buscar
 	     	</button>
+                <div class="Filtros">
+                        <select name="Ordenamiento">
+                            <option value="Opcion">Seleccione una opción</option>
+                            <option value="Alfabeticamente">Alfábeticamente(A-Z a-z)</option>
+                            <option value="Anio">Año(descendente)</option>
+                        </select>
+                        <br/>
+                        <select name="Filtro">
+                            <option value="Opcion">Seleccione una opcion</option>
+                            <option value="Videos">Videos</option>
+                            <option value="Listas">Listas de Reproducción</option>
+                            <option value="Canales">Canales</option>
+                        </select>
+                    </div>
 	   </div>
 	</div>
+            </form>
 	<div class="titulos">
 		<h4 class="linea">-</h4>
                 <a href="MiPerfil.jsp" target="iFrame" class="derecha"><img src="https://pbs.twimg.com/media/Do4L0ULXUAAbQLZ.png" class="imgPerfil">
